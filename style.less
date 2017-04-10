@@ -1,0 +1,151 @@
+@font-face {
+  font-family: SWRPG-Symbol;
+  src: url(SWRPG-Symbol.otf);
+}
+
+html {
+  background-color: #333;
+  color: #EEE;
+}
+
+.rack {
+  display: flex;
+  flex-direction: row;
+}
+
+.die() {
+  font-family: SWRPG-Symbol;
+  position: relative;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+
+  >._die {
+    position: absolute;
+  }
+
+  >._symbol {
+    position: absolute;
+  }
+
+  &:hover >._die,
+  &:hover >._symbol {
+    cursor: pointer;
+  }
+}
+
+.die-boost {
+  .die();
+   >._die {
+     font-size: 64px;
+     top: -5px;
+     color: hsl(209, 90%, 60%);
+   }
+   >._symbol {
+     font-size: 32px;
+     left: 13px;
+     top: -3px;
+     color: black;
+   }
+
+   &:hover >._die {
+     color: hsl(209, 100%, 70%);
+   }
+}
+
+.die-setback {
+  .die();
+  >._die {
+    font-size: 64px;
+    top: -5px;
+    color: black;
+  }
+  >._symbol {
+    font-size: 32px;
+    left: 15px;
+    top: -3px;
+    color: hsl(0,0%, 85%);
+  }
+
+  &:hover >._die {
+    color: hsl(0,0%, 15%);
+  }
+}
+
+.die-ability {
+   .die();
+   >._die {
+     font-size: 64px;
+     top: -5px;
+     color: green;
+   }
+   >._symbol {
+     font-size: 32px;
+     left: 15px;
+     top: -3px;
+     color: black;
+   }
+
+   &:hover >._die {
+     color: lighten(green, 10%);
+   }
+}
+
+.die-difficulty {
+  .die();
+  >._die {
+    font-size: 64px;
+    top: -5px;
+    color: rebeccapurple;
+  }
+  >._symbol {
+    font-size: 32px;
+    left: 15px;
+    top: 4px;
+    color: black;
+  }
+
+  &:hover >._die {
+    color: lighten(rebeccapurple, 20%);
+  }
+}
+
+.die-proficiency {
+  .die();
+  >._die {
+    font-size: 50px;
+    top: -5px;
+    left: 6px;
+    color: gold;
+  }
+  >._symbol {
+    font-size: 32px;
+    left: 19px;
+    top: -4px;
+    color: black;
+  }
+
+  &:hover >._die {
+    color: lighten(gold, 20%);
+  }
+}
+
+.die-challenge {
+  .die();
+  >._die {
+    font-size: 50px;
+    top: -5px;
+    left: 6px;
+    color: red;
+  }
+  >._symbol {
+    font-size: 32px;
+    left: 19px;
+    top: -4px;
+    color: black;
+  }
+
+  &:hover >._die {
+    color: lighten(red, 20%);
+  }
+}
