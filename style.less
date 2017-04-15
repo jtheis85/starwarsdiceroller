@@ -4,13 +4,35 @@
 }
 
 html {
-  background-color: #333;
-  color: #EEE;
+  color: #222;
 }
 
 .rack {
   display: flex;
   flex-direction: row;
+}
+
+.svg-die {
+  display: block;
+  position: relative;
+  font-family: SWRPG-Symbol;
+
+  ._symbol-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  ._proficiency {
+    fill: gold;
+    stroke: hsl(0,0%, 10%);
+  }
 }
 
 .die() {
@@ -102,7 +124,7 @@ html {
     font-size: 32px;
     left: 15px;
     top: 4px;
-    color: black;
+    color: hsl(0,0%, 85%);
   }
 
   &:hover >._die {
@@ -142,7 +164,7 @@ html {
     font-size: 32px;
     left: 19px;
     top: -4px;
-    color: black;
+    color: hsl(0,0%, 90%);
   }
 
   &:hover >._die {
