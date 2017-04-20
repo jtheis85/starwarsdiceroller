@@ -6,26 +6,205 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="rack">
-        <div class="svg-die">
-            <svg class="shape" viewBox="0 0 340 300" height="100" width="100">
-                <defs>
-                    <filter id="f1" x="-10%" y="-10%" width="200%" height="200%">
-                        <feOffset result="offOut" in="SourceGraphic" dx="0" dy="0"></feOffset>
-                        <feColorMatrix result="matrixOut" in ="offOut" type="matrix"
-                                       values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"></feColorMatrix>
-                        <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="2" />
-                        <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-                    </filter>
-                </defs>
-                <polygon class="_proficiency" points="320,150 245,280 95,280 20,150 95,20 245,20" filter="url(#f1)"></polygon>
-
-
+    <div class="rack rack-proficiency">
+        <div class="die proficiency">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
             </svg>
-            <svg class="_symbol" viewBox="0 0 1200 1200" height="75" width="75">
-                <path d="m1068.76928,775.99988l-77.87398,7c-15.36987,43 -37.91233,83 -67.62741,118s-63.52878,64 -103.49043,88l39.96165,52l-56.35617,-41c-25.61644,15 -53.2822,27 -81.97261,36s-59.43015,15 -90.16988,19l0,62l-90.16988,25l0,-87c-54.30686,-6 -104.51508,-21 -151.64934,-45s-88.12056,-55 -122.95892,-92c-34.83836,-38 -62.50412,-81 -82.99727,-129c-19.4685,-48 -29.71507,-100 -29.71507,-155c0,-56 10.24658,-108 31.76439,-157c20.49315,-50 49.18357,-93 86.07125,-131c35.86302,-38 78.89864,-68 128.08221,-92c48.15891,-23 101.44111,-37 157.79728,-40l6.14795,-180l45.08494,0l6.14795,180c56.35617,3 109.63837,17 158.82194,40c49.18357,24 92.21919,54 128.08221,92c36.88768,38 65.57809,81 86.07125,131c21.51781,49 31.76439,101 31.76439,157c0,48 -7.1726,91 -21.51781,131l70.70138,11zm-529.74802,-85l16.39452,-429c-49.18357,4 -95.29316,16 -138.32879,37c-42.01097,20 -78.89864,48 -110.66303,81c-32.78905,34 -57.38083,72 -75.82467,116c-18.44384,43 -27.66576,90 -27.66576,138s9.22192,94 26.6411,136c17.41918,43 40.98631,81 71.72604,115c29.71507,33 66.60275,60 107.58906,81s85.04659,35 132.18084,41l0,-146l-5.12329,-22l-148.57536,74l101.44111,-142l-233.62195,-154l283.83018,74zm146.52605,24l263.33702,42c15.36987,-39 22.54247,-80 22.54247,-123c0,-49 -9.22192,-96 -27.66576,-139c-18.44384,-44 -43.03562,-82 -74.80001,-115c-31.76439,-34 -69.67672,-61 -112.71235,-81c-43.03562,-21 -89.14522,-33 -139.35345,-37l15.36987,393l200.83291,-144l-147.55071,204zm-4.09863,93l109.63837,144c31.76439,-20 60.4548,-44 85.04659,-72c25.61644,-28 46.1096,-58 61.47946,-92l-256.16442,20zm-50.20823,63l0,136c22.54247,-3 45.08494,-7 66.60275,-14c21.51781,-6 43.03562,-15 62.50412,-25l-129.10687,-97z" />
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
             </svg>
         </div>
+        <div class="die proficiency">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die proficiency">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die proficiency">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die proficiency">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die proficiency">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+    </div>
+    <div class="rack rack-challenge">
+        <div class="die challenge">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die challenge">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die challenge">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die challenge">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die challenge">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die challenge">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d12"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+    </div>
+    <div class="rack rack-ability">
+        <div class="die ability">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die ability">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die ability">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die ability">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die ability">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die ability">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+    </div>
+    <div class="rack rack-difficulty">
+        <div class="die difficulty">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die difficulty">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die difficulty">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die difficulty">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die difficulty">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
+        <div class="die difficulty">
+            <svg class="shape" height="75" width="75">
+                <use xlink:href="dice.svg#d8"></use>
+            </svg>
+            <svg class="symbol" height="50" width="50">
+                <use xlink:href="symbols.svg#triumph"></use>
+            </svg>
+        </div>
     </div>
     <div class="rack">
         <div class="die-boost">
@@ -77,110 +256,6 @@
         <div class="die-setback">
             <span class="_die">b</span>
             <span class="_symbol">t</span>
-        </div>
-    </div>
-    <div class="rack">
-        <div class="die-ability">
-            <span class="_die">d</span>
-            <span class="_symbol">s</span>
-        </div>
-        <div class="die-ability">
-            <span class="_die">d</span>
-            <span class="_symbol">s</span>
-        </div>
-        <div class="die-ability">
-            <span class="_die">d</span>
-            <span class="_symbol">s</span>
-        </div>
-        <div class="die-ability">
-            <span class="_die">d</span>
-            <span class="_symbol">s</span>
-        </div>
-        <div class="die-ability">
-            <span class="_die">d</span>
-            <span class="_symbol">s</span>
-        </div>
-        <div class="die-ability">
-            <span class="_die">d</span>
-            <span class="_symbol">s</span>
-        </div>
-    </div>
-    <div class="rack">
-        <div class="die-difficulty">
-            <span class="_die">d</span>
-            <span class="_symbol">f</span>
-        </div>
-        <div class="die-difficulty">
-            <span class="_die">d</span>
-            <span class="_symbol">f</span>
-        </div>
-        <div class="die-difficulty">
-            <span class="_die">d</span>
-            <span class="_symbol">f</span>
-        </div>
-        <div class="die-difficulty">
-            <span class="_die">d</span>
-            <span class="_symbol">f</span>
-        </div>
-        <div class="die-difficulty">
-            <span class="_die">d</span>
-            <span class="_symbol">f</span>
-        </div>
-        <div class="die-difficulty">
-            <span class="_die">d</span>
-            <span class="_symbol">f</span>
-        </div>
-    </div>
-    <div class="rack">
-        <div class="die-proficiency">
-            <span class="_die">c</span>
-            <span class="_symbol">x</span>
-        </div>
-        <div class="die-proficiency">
-            <span class="_die">c</span>
-            <span class="_symbol">x</span>
-        </div>
-        <div class="die-proficiency">
-            <span class="_die">c</span>
-            <span class="_symbol">x</span>
-        </div>
-        <div class="die-proficiency">
-            <span class="_die">c</span>
-            <span class="_symbol">x</span>
-        </div>
-        <div class="die-proficiency">
-            <span class="_die">c</span>
-            <span class="_symbol">x</span>
-        </div>
-        <div class="die-proficiency">
-            <span class="_die">c</span>
-            <span class="_symbol">x</span>
-        </div>
-    </div>
-    <div class="rack">
-        <div class="die-challenge">
-            <span class="_die">c</span>
-            <span class="_symbol">y</span>
-        </div>
-        <div class="die-challenge">
-            <span class="_die">c</span>
-            <span class="_symbol">y</span>
-        </div>
-        <div class="die-challenge">
-            <span class="_die">c</span>
-            <span class="_symbol">y</span>
-        </div>
-        <div class="die-challenge">
-            <span class="_die">c</span>
-            <span class="_symbol">y</span>
-        </div>
-        <div class="die-challenge">
-            <span class="_die">c</span>
-            <span class="_symbol">y</span>
-        </div>
-        <div class="die-challenge">
-            <span class="_die">c</span>
-            <span class="_symbol">y</span>
         </div>
     </div>
 </body>

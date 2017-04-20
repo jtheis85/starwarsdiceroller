@@ -4,7 +4,7 @@
 }
 
 html {
-  color: #222;
+  background-color: #222;
 }
 
 .rack {
@@ -12,10 +12,89 @@ html {
   flex-direction: row;
 }
 
+.die {
+  position: relative;
+  margin-right: 5px;
+
+  .shape {
+    display: block;
+    stroke-width: 6px;
+  }
+
+  .symbol {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &:hover .shape {
+    cursor: pointer;
+  }
+  &:hover .symbol {
+    cursor: pointer;
+  }
+}
+
+.proficiency {
+  .shape {
+    fill: gold;
+    stroke: hsl(0,0%, 90%);
+
+  }
+  &:hover .shape {
+    fill: lighten(gold, 20%);
+  }
+}
+
+@challenge-red: hsl(0, 90%, 50%);
+.challenge {
+  .symbol {
+    fill: white;
+  }
+
+  .shape {
+    fill: @challenge-red;
+    stroke: hsl(0,0%, 90%);
+  }
+
+  &:hover .shape {
+    fill: lighten(@challenge-red, 20%);
+  }
+
+}
+
+.ability {
+  .shape {
+    fill: green;
+    stroke: hsl(0,0%, 90%);
+  }
+
+  &:hover .shape {
+    fill: lighten(green, 20%);
+  }
+}
+
+.difficulty {
+  .symbol {
+    fill: white;
+  }
+
+  .shape {
+    fill: purple;
+    stroke: hsl(0,0%, 90%);
+  }
+
+  &:hover .shape {
+    fill: lighten(purple, 20%);
+  }
+}
+
 .svg-die {
   display: block;
   position: relative;
-  font-family: SWRPG-Symbol;
 
   ._symbol-container {
     position: absolute;
@@ -27,11 +106,6 @@ html {
     bottom: 0;
     left: 0;
     right: 0;
-  }
-
-  ._proficiency {
-    fill: gold;
-    stroke: hsl(0,0%, 10%);
   }
 }
 
@@ -132,7 +206,7 @@ html {
   }
 }
 
-.die-proficiency {
+.die-proficiency-font {
   .die();
   >._die {
     font-size: 50px;

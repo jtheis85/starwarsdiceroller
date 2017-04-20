@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <symbol id="d12" viewBox="0 0 340 340">
+        <polygon points="320,170 245,300 95,300 20,170 95,40 245,40 "></polygon>
+    </symbol>
+    <symbol id="d8" viewBox="0 0 340 340">
+        <polygon points="170,20 280,170 170,320 60,170"></polygon>
+    </symbol>
+    <!--
+    Apparently, it has been a bug in Chromium for literally years that you can't use
+    filters in external files. I could make this inline if I REALLY wanted to use them.
+    https://bugs.chromium.org/p/chromium/issues/detail?id=109212
+    http://stackoverflow.com/questions/30821587/svg-filter-in-external-file-not-being-applied
+    -->
+    <symbol id="proficiency" viewBox="0 0 340 300">
+        <defs>
+            <filter id="f1" x="-10%" y="-10%" width="200%" height="200%">
+                <feOffset result="offOut" in="SourceGraphic" dx="0" dy="0"></feOffset>
+                <feColorMatrix
+                    result="matrixOut"
+                    in="offOut"
+                    type="matrix"
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"></feColorMatrix>
+                <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="2"/>
+                <feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
+            </filter>
+        </defs>
+        <polygon
+            points="320,150 245,280 95,280 20,150 95,20 245,20"
+            filter="url(#f1)"></polygon>
+    </symbol>
+</svg>
