@@ -38,7 +38,7 @@ html {
   }
 }
 
-.proficiency {
+.die.proficiency {
   .shape {
     fill: gold;
     stroke: hsl(0,0%, 90%);
@@ -50,7 +50,7 @@ html {
 }
 
 @challenge-red: hsl(0, 90%, 50%);
-.challenge {
+.die.challenge {
   .symbol {
     fill: white;
   }
@@ -66,7 +66,7 @@ html {
 
 }
 
-.ability {
+.die.ability {
   .shape {
     fill: green;
     stroke: hsl(0,0%, 90%);
@@ -77,7 +77,7 @@ html {
   }
 }
 
-.difficulty {
+.die.difficulty {
   .symbol {
     fill: white;
   }
@@ -92,156 +92,28 @@ html {
   }
 }
 
-.svg-die {
-  display: block;
-  position: relative;
+.die.boost {
+  .shape {
+    fill: hsl(200, 50%, 50%);
+    stroke: hsl(0,0%, 90%);
+  }
 
-  ._symbol-container {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  &:hover .shape {
+    fill: hsl(200, 50%, 70%);
   }
 }
 
-.die() {
-  font-family: SWRPG-Symbol;
-  position: relative;
-  width: 70px;
-  height: 70px;
-  line-height: 70px;
-
-  >._die {
-    position: absolute;
+.die.setback {
+  .symbol {
+    fill: white;
   }
 
-  >._symbol {
-    position: absolute;
+  .shape {
+    fill: black;
+    stroke: hsl(0,0%, 90%);
   }
 
-  &:hover >._die,
-  &:hover >._symbol {
-    cursor: pointer;
-  }
-}
-
-.die-boost {
-  .die();
-   >._die {
-     font-size: 64px;
-     top: -5px;
-     color: hsl(209, 90%, 60%);
-   }
-   >._symbol {
-     font-size: 32px;
-     left: 13px;
-     top: -3px;
-     color: black;
-   }
-
-   &:hover >._die {
-     color: hsl(209, 100%, 70%);
-   }
-}
-
-.die-setback {
-  .die();
-  >._die {
-    font-size: 64px;
-    top: -5px;
-    color: black;
-  }
-  >._symbol {
-    font-size: 32px;
-    left: 15px;
-    top: -3px;
-    color: hsl(0,0%, 85%);
-  }
-
-  &:hover >._die {
-    color: hsl(0,0%, 15%);
-  }
-}
-
-.die-ability {
-   .die();
-   >._die {
-     font-size: 64px;
-     top: -5px;
-     color: green;
-   }
-   >._symbol {
-     font-size: 32px;
-     left: 15px;
-     top: -3px;
-     color: black;
-   }
-
-   &:hover >._die {
-     color: lighten(green, 10%);
-   }
-}
-
-.die-difficulty {
-  .die();
-  >._die {
-    font-size: 64px;
-    top: -5px;
-    color: rebeccapurple;
-  }
-  >._symbol {
-    font-size: 32px;
-    left: 15px;
-    top: 4px;
-    color: hsl(0,0%, 85%);
-  }
-
-  &:hover >._die {
-    color: lighten(rebeccapurple, 20%);
-  }
-}
-
-.die-proficiency-font {
-  .die();
-  >._die {
-    font-size: 50px;
-    top: -5px;
-    left: 6px;
-    color: gold;
-  }
-  >._symbol {
-    font-size: 32px;
-    left: 19px;
-    top: -4px;
-    color: black;
-  }
-
-  &:hover >._die {
-    color: lighten(gold, 20%);
-  }
-}
-
-.die-challenge {
-  .die();
-  >._die {
-    font-size: 50px;
-    top: -5px;
-    left: 6px;
-    color: red;
-  }
-  >._symbol {
-    font-size: 32px;
-    left: 19px;
-    top: -4px;
-    color: hsl(0,0%, 90%);
-  }
-
-  &:hover >._die {
-    color: lighten(red, 20%);
+  &:hover .shape {
+    fill: lighten(black, 20%);
   }
 }

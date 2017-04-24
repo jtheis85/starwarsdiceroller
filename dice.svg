@@ -5,6 +5,9 @@
     <symbol id="d8" viewBox="0 0 340 340">
         <polygon points="170,20 280,170 170,320 60,170"></polygon>
     </symbol>
+    <symbol id="d6" viewBox="0 0 340 340">
+        <polygon points="60,60 280,60 280,280 60,280"></polygon>
+    </symbol>
     <!--
     Apparently, it has been a bug in Chromium for literally years that you can't use
     filters in external files. I could make this inline if I REALLY wanted to use them.
