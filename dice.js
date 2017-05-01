@@ -1,6 +1,6 @@
 'use strict';
 
-const dice = (function() {
+const diceLib = (function() {
     const symbol = {
         TRIUMPH: 'TRIUMPH',
         SUCCESS: 'SUCCESS',
@@ -34,8 +34,77 @@ const dice = (function() {
         }
     };
 
+    const ability = {
+        faceCount: 8,
+        faces: {
+            1: [],
+            2: [ symbol.ADVANTAGE ],
+            3: [ symbol.ADVANTAGE ],
+            4: [ symbol.ADVANTAGE, symbol.ADVANTAGE ],
+            5: [ symbol.SUCCESS ],
+            6: [ symbol.SUCCESS ],
+            7: [ symbol.SUCCESS, symbol.ADVANTAGE ],
+            8: [ symbol.SUCCESS, symbol.SUCCESS ]
+        }
+    };
+
+    const difficulty = {
+        faceCount: 8,
+        faces: {
+            1: [],
+            2: [ symbol.THREAT ],
+            3: [ symbol.THREAT ],
+            4: [ symbol.THREAT ],
+            5: [ symbol.THREAT, symbol.THREAT ],
+            6: [ symbol.FAILURE ],
+            7: [ symbol.THREAT, symbol.FAILURE ],
+            8: [ symbol.FAILURE, symbol.FAILURE ]
+        }
+    };
+
+    const proficiency = {
+        faceCount: 12,
+        faces: {
+            1:  [],
+            2:  [ symbol.ADVANTAGE ],
+            3:  [ symbol.ADVANTAGE, symbol.ADVANTAGE ],
+            4:  [ symbol.ADVANTAGE, symbol.ADVANTAGE ],
+            5:  [ symbol.SUCCESS ],
+            6:  [ symbol.SUCCESS ],
+            7:  [ symbol.SUCCESS, symbol.ADVANTAGE ],
+            8:  [ symbol.SUCCESS, symbol.ADVANTAGE ],
+            9:  [ symbol.SUCCESS, symbol.ADVANTAGE ],
+            10: [ symbol.SUCCESS, symbol.SUCCESS ],
+            11: [ symbol.SUCCESS, symbol.SUCCESS ],
+            12: [ symbol.TRIUMPH ]
+        }
+    };
+
+    const challenge = {
+        faceCount: 12,
+        faces: {
+            1:  [],
+            2:  [ symbol.THREAT ],
+            3:  [ symbol.THREAT ],
+            4:  [ symbol.THREAT, symbol.THREAT ],
+            5:  [ symbol.THREAT, symbol.THREAT ],
+            6:  [ symbol.FAILURE ],
+            7:  [ symbol.FAILURE ],
+            8:  [ symbol.FAILURE, symbol.THREAT ],
+            9:  [ symbol.FAILURE, symbol.THREAT ],
+            10: [ symbol.FAILURE, symbol.FAILURE ],
+            11: [ symbol.FAILURE, symbol.FAILURE ],
+            12: [ symbol.DESPAIR ]
+        }
+    };
+
     return {
         boost: boost,
-        setback: setback
+        setback: setback,
+        ability: ability,
+        difficulty: difficulty,
+        proficiency: proficiency,
+        challenge: challenge,
+        symbol: symbol
     }
 })();
