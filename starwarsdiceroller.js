@@ -72,7 +72,38 @@
         return finalSymbols;
     }
 
-    rollDice([
+    function outputSymbols(symbols, isRaw) {
+        var output = document.getElementsByClassName('results-raw')[0];
+
+
+        symbols.forEach(function(symbol) {
+            var svg = createSvgElement('svg');
+            addSvgAttribute(svg, 'class', 'symbol');
+            addSvgAttribute(svg, 'width', 50);
+            addSvgAttribute(svg, 'height', 50);
+            var use = createSvgElement('use');
+            addSvgAttribute(use, 'href', 'symbols.svg#' + symbol.toLowerCase());
+
+            svg.appendChild(use);
+            output.appendChild(svg);
+        });
+    }
+
+    function createSvgElement(elementName) {
+        var svgns = 'http://www.w3.org/2000/svg';
+        return document.createElementNS(svgns, elementName);
+    }
+
+    function addSvgAttribute(element, attributeName, value) {
+        if(attributeName === 'href') {
+            var xlns = 'http://www.w3.org/1999/xlink';
+            return element.setAttributeNS(xlns, attributeName, value);
+        } else {
+            return element.setAttribute(attributeName, value);
+        }
+    }
+
+    var symbols = rollDice([
         diceLib.proficiency,
         diceLib.proficiency,
         diceLib.ability,
@@ -85,4 +116,6 @@
         diceLib.difficulty,
         diceLib.challenge
     ]);
+
+    outputSymbols(symbols);
 })();
