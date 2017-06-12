@@ -6,10 +6,27 @@
 html {
   background-color: #222;
 }
+
+body {
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: sans-serif;
+  font-weight: 100;
+  margin-top: 1em;
+  margin-bottom: .2em;
+  color: hsl(0,0%, 50%);
+}
+
 .results-cancelled,
 .results-raw {
   .symbol {
-    fill: hsl(0,0%, 90%);
+    fill: hsl(0,0%, 95%);
+  }
+
+  .symbol.cancelled {
+    fill: hsl(0, 100%, 75%);
   }
 }
 
@@ -124,4 +141,10 @@ html {
   &:hover .shape {
     fill: lighten(black, 20%);
   }
+}
+
+#roll-button {
+  font-size: 20px;
+  margin: 20px;
+  padding: 10px 20px;
 }

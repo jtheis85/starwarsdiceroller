@@ -1,18 +1,19 @@
 'use strict';
 
 (function() {
+    var rawOutput = document.getElementsByClassName('results-raw')[0];
+    var cancelledOutput = document.getElementsByClassName('results-cancelled')[0];
+
+    document.getElementById('roll-button').addEventListener('click', function (event) {
+        clearAllOutput();
+        rollAll();
+    });
+
     function rollSingleDie(die) {
         // Get a random face of the die, and the symbols on it
         const rolledFace = Math.floor(Math.random() * die.faceCount) + 1;
         const rolledSymbols = die.faces[rolledFace];
         return rolledSymbols;
-    }
-
-    function printSymbols (symbols, label) {
-        const result = symbols.length === 0
-            ? 'No Symbols Rolled!'
-            : symbols.join(' ');
-        console.log(label + ': ' + result);
     }
 
     function rollDice(dice) {
@@ -23,6 +24,56 @@
         }).reduce(function(prev, next) {
             return prev.concat(next);
         }, []));
+    }
+
+    function markSymbols(groupedSymbols) {
+        // "Destructure" the groups
+        var successes = groupedSymbols.successes;
+        var failures = groupedSymbols.failures;
+        var advantages = groupedSymbols.advantages;
+        var threats = groupedSymbols.threats;
+        var triumphs = groupedSymbols.triumphs;
+        var despairs = groupedSymbols.despairs;
+
+        // Cancel successes and failures
+        var i;
+        if(successes.length > failures.length) {
+            for(i = successes.length - failures.length; i < successes.length; i++) {
+                successes[i].isCancelled = true;
+            }
+            // Mark all failures cancelled
+            for(i = 0; i < failures.length; i++) {
+                failures[i].isCancelled = true;
+            }
+        } else if (successes.length < failures.length) {
+            for(i = failures.length - successes.length; i < failures.length; i++) {
+                failures[i].isCancelled = true;
+            }
+            // Mark all successes cancelled
+            for(i = 0; i < successes.length; i++) {
+                successes[i].isCancelled = true;
+            }
+        }
+
+        if(advantages.length > threats.length) {
+            for(i = advantages.length - threats.length; i < advantages.length; i++) {
+                advantages[i].isCancelled = true;
+            }
+            // Mark all threats cancelled
+            for(i = 0; i < threats.length; i++) {
+                threats[i].isCancelled = true;
+            }
+        } else if (advantages.length < threats.length) {
+            for(i = threats.length - advantages.length; i < threats.length; i++) {
+                threats[i].isCancelled = true;
+            }
+            // Mark all advantages cancelled
+            for(i = 0; i < advantages.length; i++) {
+                advantages[i].isCancelled = true;
+            }
+        }
+
+        return triumphs.concat(despairs, successes, failures, advantages, threats);
     }
 
     function cancelSymbols(groupedSymbols) {
@@ -83,26 +134,49 @@
         }
     }
 
+    /**
+     * Wipe away the rolled results so a fresh set can be displayed
+     */
+    function clearAllOutput() {
+        while (rawOutput.firstChild) {
+            rawOutput.removeChild(rawOutput.firstChild);
+        }
+        while (cancelledOutput.firstChild) {
+            cancelledOutput.removeChild(cancelledOutput.firstChild);
+        }
+    }
+
     function outputSymbols(symbols, isRaw) {
         isRaw = isRaw || false;
-        var output;
-        if(isRaw) {
-            output = document.getElementsByClassName('results-raw')[0];
-        } else {
-            output = document.getElementsByClassName('results-cancelled')[0];
-        }
+        var size = isRaw ? 25 : 50;
+        var output = isRaw ? rawOutput : cancelledOutput;
 
-        symbols.forEach(function(symbol) {
-            var svg = createSvgElement('svg');
-            addSvgAttribute(svg, 'class', 'symbol');
-            addSvgAttribute(svg, 'width', 50);
-            addSvgAttribute(svg, 'height', 50);
-            var use = createSvgElement('use');
-            addSvgAttribute(use, 'href', 'symbols.svg#' + symbol.toLowerCase());
+        // Title the output areas
+        var title = isRaw ? 'Raw Roll' : 'Final Results';
+        var heading = document.createElement('h2');
+        var titleNode = document.createTextNode(title);
+        heading.appendChild(titleNode);
+        output.appendChild(heading);
 
-            svg.appendChild(use);
-            output.appendChild(svg);
+        symbols.forEach(function (symbol) {
+            outputSymbol(size, output, symbol);
         });
+    }
+
+    function outputSymbol(size, output, symbol) {
+        var svg = createSvgElement('svg');
+        if (symbol.isCancelled) {
+            addSvgAttribute(svg, 'class', 'symbol cancelled');
+        } else {
+            addSvgAttribute(svg, 'class', 'symbol');
+        }
+        addSvgAttribute(svg, 'width', size);
+        addSvgAttribute(svg, 'height', size);
+        var use = createSvgElement('use');
+        addSvgAttribute(use, 'href', 'symbols.svg#' + symbol.glyph.toLowerCase());
+
+        svg.appendChild(use);
+        output.appendChild(svg);
     }
 
     function createSvgElement(elementName) {
@@ -119,28 +193,43 @@
         }
     }
 
-    var rolledGroupedSymbols = rollDice([
-        diceLib.proficiency,
-        diceLib.proficiency,
-        diceLib.ability,
-        diceLib.ability,
-        diceLib.boost,
-        diceLib.boost,
-        diceLib.boost,
-        diceLib.setback,
-        diceLib.setback,
-        diceLib.difficulty,
-        diceLib.challenge
-    ]);
+    function rollAll() {
+        var rolledGroupedSymbols = rollDice([
+            diceLib.proficiency,
+            diceLib.proficiency,
+            diceLib.ability,
+            diceLib.ability,
+            diceLib.boost,
+            diceLib.boost,
+            diceLib.boost,
+            diceLib.setback,
+            diceLib.setback,
+            diceLib.difficulty,
+            diceLib.challenge
+        ]);
 
-    // Display the uncancelled symbols
-    var rolledSymbols = Object.keys(rolledGroupedSymbols).reduce(function(arr, next) {
-        return arr.concat(rolledGroupedSymbols[next])
-    }, []);
-    var isRaw = true;
-    outputSymbols(rolledSymbols, isRaw);
+        // Convert the groups of plain symbols to symbol descriptor objects
+        Object.keys(rolledGroupedSymbols).forEach(function(groupKey) {
+            rolledGroupedSymbols[groupKey] = rolledGroupedSymbols[groupKey].map(function(symbol) {
+                return {
+                    glyph: symbol,
+                    isCancelled: false
+                }
+            })
+        });
 
-    // Display the final cancelled symbols
-    var cancelledSymbols = cancelSymbols(rolledGroupedSymbols);
-    outputSymbols(cancelledSymbols);
+        // Display the final cancelled symbols
+        var cancelledSymbols = cancelSymbols(rolledGroupedSymbols);
+        outputSymbols(cancelledSymbols);
+
+        var markedSymbols = markSymbols(rolledGroupedSymbols);
+        // Flatten the grouped symbols for display
+        var rolledSymbols = Object.keys(markedSymbols).reduce(function(arr, next) {
+            return arr.concat(markedSymbols[next])
+        }, []);
+        // Display the uncancelled symbols
+        var isRaw = true;
+        outputSymbols(rolledSymbols, isRaw);
+
+    }
 })();
