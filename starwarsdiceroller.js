@@ -44,18 +44,11 @@
   function rollDice(dice) {
     // Produces an array of arrays of symbols
     return groupSymbols(dice.map(function(die) {
-      return rollSingleDie(die);
-    // Combine the results into a single array
+      return diceLib.rollDie(die);
+      // Combine the results into a single array
     }).reduce(function(prev, next) {
       return prev.concat(next);
     }, []));
-  }
-
-  function rollSingleDie(die) {
-    // Get a random face of the die, and the symbols on it
-    const rolledFace = Math.floor(Math.random() * die.faceCount) + 1;
-    const rolledSymbols = die.faces[rolledFace];
-    return rolledSymbols;
   }
 
   function markSymbols(groupedSymbols) {
