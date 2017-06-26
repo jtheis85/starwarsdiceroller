@@ -9,6 +9,21 @@ var ui = (function() {
   var rawOutput = document.getElementsByClassName('results-raw')[0];
   var cancelledOutput = document.getElementsByClassName('results-cancelled')[0];
 
+  function hookUpDieClick(dieClickCallback) {
+    [].forEach.call(document.querySelectorAll('.die'), function (die) {
+      die.addEventListener('click', function (event) {
+        // Visually toggle the appearance of the die
+        die.classList.toggle('selected');
+
+        // Figure out what kind of die was clicked
+        var dieType = die.className.split(' ').filter(function(className) {
+          return className !== 'die';
+        })[0];
+        dieClickCallback(dieType, die.classList.contains('selected'));
+      })
+    });
+  }
+
   /**
    * Hook up the given callback to be triggered when the roll button is clicked (after
    * clearing the output of course)
@@ -83,6 +98,7 @@ var ui = (function() {
 
   return {
     outputSymbols: outputSymbols,
-    hookUpRollAll: hookUpRollAll
+    hookUpRollAll: hookUpRollAll,
+    hookUpDieClick: hookUpDieClick
   }
 })();

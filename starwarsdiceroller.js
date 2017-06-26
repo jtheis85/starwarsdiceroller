@@ -1,20 +1,30 @@
 'use strict';
 
 (function() {
+
+  var proficiencyCount = 0;
+  var abilityCount = 0;
+  var boostCount = 0;
+  var setbackCount = 0;
+  var difficultyCount = 0;
+  var challengeCount = 0;
+
   function rollAll() {
-    var rolledGroupedSymbols = rollDice([
-      diceLib.proficiency,
-      diceLib.proficiency,
-      diceLib.ability,
-      diceLib.ability,
-      diceLib.boost,
-      diceLib.boost,
-      diceLib.boost,
-      diceLib.setback,
-      diceLib.setback,
-      diceLib.difficulty,
-      diceLib.challenge
-    ]);
+    var dice = [];
+    addDice(diceLib.proficiency, proficiencyCount);
+    addDice(diceLib.ability, abilityCount);
+    addDice(diceLib.boost, boostCount);
+    addDice(diceLib.setback, setbackCount);
+    addDice(diceLib.difficulty, difficultyCount);
+    addDice(diceLib.challenge, challengeCount);
+
+    function addDice(die, count) {
+      for(var i = 0; i < count; i++) {
+        dice.push(die);
+      }
+    }
+
+    var rolledGroupedSymbols = rollDice(dice);
 
     // Convert the groups of plain symbols to symbol descriptor objects
     Object.keys(rolledGroupedSymbols).forEach(function(groupKey) {
@@ -40,6 +50,30 @@
     ui.outputSymbols(rolledSymbols, isRaw);
   }
   ui.hookUpRollAll(rollAll);
+
+  function dieClick(dieType, isSelected) {
+    switch(dieType) {
+      case 'proficiency':
+        proficiencyCount += isSelected ? 1 : -1;
+        break;
+      case 'ability':
+        abilityCount += isSelected ? 1 : -1;
+        break;
+      case 'boost':
+        boostCount += isSelected ? 1 : -1;
+        break;
+      case 'setback':
+        setbackCount += isSelected ? 1 : -1;
+        break;
+      case 'difficulty':
+        difficultyCount += isSelected ? 1 : -1;
+        break;
+      case 'challenge':
+        challengeCount += isSelected ? 1 : -1;
+        break;
+    }
+  }
+  ui.hookUpDieClick(dieClick);
 
   function rollDice(dice) {
     // Produces an array of arrays of symbols
