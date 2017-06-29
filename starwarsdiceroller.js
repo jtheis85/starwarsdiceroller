@@ -112,6 +112,14 @@
         for(i = 0; i < successes.length; i++) {
             successes[i].isCancelled = true;
         }
+    } else if (successes.length === failures.length) {
+      // Equal number, all successes and failures cancel
+      successes.forEach(function(success) {
+        success.isCancelled = true;
+      });
+      failures.forEach(function(failure) {
+        failure.isCancelled = true;
+      });
     }
 
     if(advantages.length > threats.length) {
@@ -130,6 +138,14 @@
         for(i = 0; i < advantages.length; i++) {
             advantages[i].isCancelled = true;
         }
+    } else if (advantages.length === threats.length) {
+      // Equal number, all advantages and threats cancel
+      advantages.forEach(function(advantage) {
+        advantage.isCancelled = true;
+      });
+      threats.forEach(function(threat) {
+        threat.isCancelled = true;
+      });
     }
 
     return triumphs.concat(despairs, successes, failures, advantages, threats);
