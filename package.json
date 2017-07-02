@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "A Star Wars RPG dice roller",
   "main": "starwarsdiceroller.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jtheis85/starwarsdiceroller.git"
@@ -19,5 +16,19 @@
   "bugs": {
     "url": "https://github.com/jtheis85/starwarsdiceroller/issues"
   },
-  "homepage": "https://github.com/jtheis85/starwarsdiceroller#readme"
+  "homepage": "https://github.com/jtheis85/starwarsdiceroller#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "webpack": "^3.0.0"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  }
 }
