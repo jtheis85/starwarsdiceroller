@@ -4,6 +4,13 @@
 
 'use strict';
 
+/**
+ * @todo just hardcoding the filenames for now to get things working.
+ * Ideally would use the webpack asset generated names
+ */
+var diceSvg = require('file-loader?name=dice.svg!./dice.svg');
+var symbolsSvg = require('file-loader?name=symbols.svg!./symbols.svg');
+
 // Get important DOM elements
 var rawOutput = document.getElementsByClassName('results-raw')[0];
 var cancelledOutput = document.getElementsByClassName('results-cancelled')[0];
